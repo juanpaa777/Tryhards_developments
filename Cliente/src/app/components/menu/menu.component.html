@@ -1,0 +1,109 @@
+<body>
+  <div class="navbar">
+    <button mat-icon-button (click)="toggleSidebar()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR8YrcFCPbj_x4P9KKtC7L4eH8NMNV8NDE2Q&s" 
+         alt="Logo UTNG" 
+         class="logo" 
+         (click)="showNoticiasSection()">    
+    <div>
+      <div class="image-container">
+        <button mat-icon-button [matMenuTriggerFor]="Notification">
+          <mat-icon>notifications</mat-icon>
+        </button>
+        <mat-menu #Notification="matMenu">
+          <span>
+            Hola!, Aquí te mostraremos  
+            Notificaciones sobre cosas 
+            que pasen en la Biblioteca..
+          </span>
+        </mat-menu>
+      </div>
+
+      <div class="image-container">
+        <button mat-icon-button [matMenuTriggerFor]="Question">
+          <mat-icon>help</mat-icon>
+        </button>
+        <mat-menu #Question="matMenu">
+          <span>
+            Hola!, Aquí te mostraremos  
+            Información relacionada a la página
+            y algún contacto para soporte 
+            Técnico...
+          </span>
+        </mat-menu>
+      </div>
+
+      <div class="image-container">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="logout()">
+            <span>Cerrar Sesión</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-layout">
+    <div class="sidebar" id="sidebar" [ngClass]="{'hidden': isSidebarHidden}">
+      <ul>
+        <li><a (click)="showNoticiasSection()">Inicio</a></li>
+        <li><a (click)="showSearchBooks()">Buscar libros</a></li>
+        <li><a (click)="showRegistroLectores()">Registrar lectores</a></li>
+        <li><a (click)="showNewBook()">Registrar libros</a></li>
+        <li><a (click)="showMulta()">Gestionar Multas</a></li>
+        <li><a (click)="showPersonalisado()">Generar reporte</a></li>
+        <li><a (click)="showRegistroBlibliotecarios()">Nuevos Bibliotecarios</a></li>
+        <li><a (click)="mostrarDevolucionDeLibros()">Devolver Libros</a></li>
+        <li><a (click)="verEventosCercanos()">Ver eventos cercanos</a></li> <!-- Nuevo botón -->
+      </ul>
+    </div>
+
+    <div class="content-section" [ngClass]="{'full-width': isSidebarHidden}">
+      <div *ngIf="showNoticias" class="seccion-noticias">
+        <h2>Noticias de la Biblioteca</h2>
+        <button class="btn-regresar" (click)="verEventosCercanos()" >Mapa</button>
+        <br><br>
+        <div class="noticias-grid">
+          <div *ngFor="let noticia of noticiasItems" class="noticia-item">
+            <h3>{{ noticia.titulo }}</h3>
+            <img [src]="noticia.imagen" [alt]="noticia.titulo">
+            <p>{{ noticia.contenido }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="showSearch">
+        <app-search-books></app-search-books>
+      </div>
+      <div *ngIf="showNewBooks">
+        <app-newbooks></app-newbooks>
+      </div>
+      <div *ngIf="showMultas">
+        <app-multas></app-multas>
+      </div>
+      <div *ngIf="showRegistro">
+        <app-bibliotecarios></app-bibliotecarios>
+      </div>
+      <div *ngIf="showLectores">
+        <app-registro-lector></app-registro-lector>
+      </div>
+      <div *ngIf="showReporte">
+        <app-personalizado></app-personalizado>
+      </div>
+      <div *ngIf="showDevolucionDeLibros">
+        <app-devolucion-de-libros></app-devolucion-de-libros>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 Universidad Tecnológica del Norte de Guanajuato. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>

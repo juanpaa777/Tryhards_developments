@@ -1,0 +1,83 @@
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: relative;
+    border-radius: 10px;
+}
+                
+.form-title{
+    font-family: 'Georgia', serif;
+    font-size: 2.5em;
+    color: #0e1114; 
+    text-align: center; 
+    margin-bottom: 20px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    font-weight: bold;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.label {
+    flex-basis: calc(50% - 10px);
+    margin-right: 10px;
+}
+
+.input[type="text"],
+.input[type="number"] {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.cancel-button {
+    background-color: rgb(23, 118, 235);
+    color: white;
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none;
+}
+
+.save-button {
+    background-color: #223ef3;
+    color: white;
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none;
+}
+
+.buttons {
+    display: flex;
+  }
+  
+  .cancel-button {
+    margin-right: 200px; /* Margen a la derecha del botón Cancel */
+    margin-left: 150px; 
+  }
+
+  .textarea {
+    width: 100%; /* Ajusta el ancho al 100% del contenedor */
+    height: auto; /* Ajusta la altura según el contenido */
+    padding: 8px; /* Añade relleno para mejorar la visibilidad */
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+}

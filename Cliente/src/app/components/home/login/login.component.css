@@ -1,0 +1,94 @@
+.btn-color {
+  background-color: #1654d8;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-color:hover {
+  background-color: #4084fa;
+}
+
+.profile-image-pic {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.cardbody-color {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+  background: none;
+  padding: 40px;
+  border-radius: 20px;
+  color: black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+}
+
+.cardbody-color input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.password-toggle-icon i {
+  font-size: 1.2rem;
+}
+
+.fa-eye-slash {
+  display: none;
+}
+
+.fa-eye {
+  display: inline-block;
+}
+
+.button-back {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: gray ;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.button-back:hover {
+  color: #cccccc;
+}
+
+.text-center a{
+  color: #2b6adf;
+  text-decoration: none;
+}
+
+.text-center a:hover{
+  text-decoration: underline;
+}
+
+.text-center button.mat-button {
+  font-size: 1rem;
+  color: #2b6adf;
+}
