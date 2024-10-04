@@ -1,0 +1,40 @@
+<div class="content-section">
+  <div class="header">
+    <div class="container">
+      <div class="position-relative">
+        <button mat-icon-button type="button" aria-label="Close" class="button-back" (click)="modal.dismiss()">
+          <mat-icon>cancel</mat-icon>
+          <i class="fas fa-arrow-left"></i>
+        </button>
+      </div>
+
+      <form class="card-body cardbody-color p-lg-5" (ngSubmit)="onLogin()">
+        <div class="text-center">
+          <h2 color="blue" Font-face = "aptos"> BIENVENIDO </h2>
+          <img src="https://e7.pngegg.com/pngimages/493/818/png-clipart-bald-eagle-bird-cartoon-animals-bird-cartoon.png"
+            class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3" width="400px" alt="profile">
+        </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" id="username" [(ngModel)]="authData.username" name="username" placeholder="Nombre de Usuario" required>
+        </div>
+
+        <div class="mb-3 position-relative">
+          <input type="password" class="form-control" id="password" [(ngModel)]="authData.password" name="password" placeholder="Contraseña" required>
+          <span class="password-toggle-icon" (click)="togglePasswordVisibility()">
+            <i class="fas" [class.fa-eye]="!passwordVisible" [class.fa-eye-slash]="passwordVisible"></i>
+          </span>
+        </div>
+
+        <div *ngIf="isRegisterMode" class="mb-3">
+          <input type="password" class="form-control" id="confirmPassword" [(ngModel)]="authData.confirmPassword" name="confirmPassword" placeholder="Confirmar Contraseña" required>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-color px-5 mb-3 w-100">
+            {{ isRegisterMode ? 'Registrar' : 'Ingresar' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
