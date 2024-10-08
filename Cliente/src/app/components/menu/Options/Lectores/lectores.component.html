@@ -1,0 +1,24 @@
+<div class="registro-lector">
+  <h1 class="form-title">Registro de Nuevos Lectores</h1>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nombreLector">Nombre Completo</label>
+      <input type="text" id="NombreCompleto" placeholder="Nombre Completo" maxlength="50" [(ngModel)]="lector.NombreCompleto"   name="NombreCompleto" required>
+    </div>
+
+    <div class="form-group">
+      <label for="control">Numero de Control</label>
+      <input type="text" id="NumeroControl" placeholder="Número de Control" maxlength="50" [(ngModel)]="lector.NumeroControl" name="NumeroControl" required>
+    </div>
+
+    <div class="form-group">
+      <label for="Correo">Correo Electrónico</label>
+      <input type="text" id="Correo" placeholder="Correo" maxlength="50" [(ngModel)]="lector.Correo" name="Correo"required>
+      
+    </div>
+
+    <button>Guardar</button>
+
+
+  </form>

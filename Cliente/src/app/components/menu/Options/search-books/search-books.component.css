@@ -1,0 +1,434 @@
+
+.search-header .title {
+    font-family: 'Georgia', serif;
+    font-size: 2.5em;
+    color: #2c3e50; 
+    text-align: center; 
+    margin-bottom: 20px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    font-weight: bold; 
+}
+
+
+.search-books {
+    position: relative;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    max-width: 900px;
+    margin: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: calc(auto);
+    overflow: hidden;
+}
+
+.search-books::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    z-index: -1;
+    border-radius: 10px;
+}
+
+.search-header, .filters {
+    position: relative;
+    z-index: 1;
+}
+
+.search-header h2 {
+    margin: 0;
+}
+
+.search-header input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px; /* Espacio entre los elementos */
+}
+
+.filter-select {
+    padding: 12px; /* Espaciado interno */
+    font-size: 1em; /* Tamaño de fuente */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+    width: 100%; /* Ancho completo en pantallas pequeñas */
+    max-width: 200px; /* Ancho máximo */
+}
+
+.filter-select:focus {
+    border-color: #4A90E2; /* Color del borde al enfocar */
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.5); /* Sombra al enfocar */
+}
+
+.search-button {
+    background-color: #4A90E2; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 12px 20px; /* Espaciado interno */
+    font-size: 1em; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones */
+    margin: 5px; /* Margen */
+}
+
+.search-button:hover {
+    background-color: #0056b3; /* Color al pasar el mouse */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+.search-button:active {
+    transform: scale(0.95); /* Reduce el tamaño al hacer clic */
+}
+
+/* Estilos para los botones */
+.btn-custom {
+    background-color: #585858; /* Color de fondo del botón (puedes cambiarlo aquí) */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 8px 16px; /* Ajusta el espaciado interno para que sean más pequeños */
+    font-size: 0.9em; /* Tamaño de fuente más pequeño */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones para el color y la transformación */
+    margin: 5px; /* Añade un margen para separar los botones */
+}
+
+.btn-custom:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el mouse (puedes cambiarlo aquí) */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño del botón */
+}
+
+.btn-custom:active {
+    transform: scale(0.95); /* Reduce el tamaño al hacer clic */
+}
+.loading-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    color: #2c3e50;
+    z-index: 10; /* Asegúrate de que esté por encima de otros elementos */
+}
+
+.results-container {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+.book {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: calc(33.333% - 40px);
+    box-sizing: border-box;
+    position: relative;
+}
+
+.book img.book-cover {
+    width: 190px;
+    height: 280px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.preview-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    animation: fadeIn 0.5s;
+}
+
+.preview-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    overflow-y: auto;
+}
+
+.preview-content img.book-cover-preview {
+    max-width: 100%; /* Limitar el ancho máximo al 100% del contenedor */
+    height: auto; /* Mantener la proporción de la imagen */
+    max-height: 300px; /* Limitar la altura máxima para evitar que ocupe toda la pantalla */
+    object-fit: contain; /* Asegurarse de que la imagen se ajuste dentro del contenedor */
+}
+
+.book-preview img.book-cover-preview {
+    width: 200px;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.book-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+
+.modal-content form div {
+    margin-bottom: 15px;
+}
+
+.modal-content form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.modal-content form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.modal-content form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content form button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.modal-content form button[type="button"] {
+    background-color: #ccc;
+}
+
+/* EditBooks styles */
+.modal-header, .modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-body {
+    padding: 1rem;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    flex: 0 0 150px;
+}
+
+.form-group input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.mat-icon {
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+
+.modal-footer {
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+.cancel-button, .save-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.cancel-button {
+    background-color: blue;
+    color: white;
+}
+
+.save-button {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Estilos para el botón de búsqueda */
+.search-button {
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 1em; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones */
+    margin: 5px; /* Margen */
+}
+.search-button:hover {
+    background-color: #0056b3; /* Color al pasar el mouse */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+.search-button:active {
+    transform: scale(0.95); /* Reduce el tamaño al hacer clic */
+}
+.alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco semitransparente */
+    -webkit-backdrop-filter: blur(10px); /* Efecto de desenfoque de fondo para Safari 9+ */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque de fondo para otros navegadores */
+    color: #333; /* Color del texto */
+    animation: fadeIn 0.5s;
+}
+
+.alert-content {
+    background-color: #e93648; /* Color de fondo de la alerta */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
+
+.alert-content h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.alert-content p {
+    margin: 10px 0 0;
+}
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #f8d7da; /* Color al pasar el mouse */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
