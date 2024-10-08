@@ -1,0 +1,17 @@
+<div *ngIf="showConfirmationModal" class="modal-backdrop" (click)="closeModal($event)">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h3>Ingrese el código de confirmación</h3>
+      <form (ngSubmit)="onSubmitCode()" #codeForm="ngForm">
+        <div class="form-group">
+          <label for="code">Código:</label>
+          <input type="text" id="code" required [(ngModel)]="confirmationCode" name="code">
+        </div>
+        <button type="submit" class="btn-submit">Validar</button>
+      </form>
+      <div *ngIf="errorMessage" class="error">
+        {{ errorMessage }}
+      </div>
+      <button (click)="resendCode()" class="btn-resend">Reenviar Código</button>
+    </div>
+  </div>
+  

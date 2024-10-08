@@ -1,0 +1,48 @@
+.container {
+    margin: 20px;
+    font-family: Arial, sans-serif; /* Mejora la tipografía */
+}
+
+input {
+    display: block;
+    margin: 10px 0;
+    padding: 10px; /* Aumenta el padding para mayor comodidad */
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+}
+
+button:hover {
+    background-color: #0056b3; /* Color al pasar el mouse */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 15px 0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+img {
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 4px; /* Bordes redondeados para las imágenes */
+    display: block; /* Asegura que las imágenes se comporten como bloques */
+    margin: 10px 0; /* Espaciado alrededor de las imágenes */
+}
