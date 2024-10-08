@@ -1,0 +1,17 @@
+/* Cliente/src/app/components/mapa/mapa.component.css */
+.btn-regresar {
+  position: absolute; /* Posición absoluta para que esté sobre el mapa */
+  top: 10px; /* Ajusta la posición según sea necesario */
+  right: 10px; /* Ajusta la posición según sea necesario */
+  padding: 10px 20px;
+  background-color: #007bff; /* Color de fondo */
+  color: white; /* Color del texto */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000; /* Asegúrate de que esté por encima del mapa */
+}
+
+.btn-regresar:hover {
+  background-color: #0056b3; /* Color de fondo al pasar el mouse */
+}

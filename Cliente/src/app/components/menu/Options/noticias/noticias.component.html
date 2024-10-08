@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>Gestión de Noticias</h1>
+  
+  <button (click)="mostrarFormulario = !mostrarFormulario">
+    {{ mostrarFormulario ? 'Cancelar' : 'Agregar Noticia' }}
+  </button>
+
+  <div *ngIf="mostrarFormulario">
+    <input [(ngModel)]="titulo" placeholder="Título" required />
+    <input [(ngModel)]="contenido" placeholder="Contenido" required />
+    <input [(ngModel)]="imagen" placeholder="URL de la Imagen" />
+    <input [(ngModel)]="coordenadas" placeholder="Coordenadas (lat,lng)" required />
+    <button (click)="agregarNoticia()">Agregar Noticia</button>
+  </div>
+
+  <ul>
+    <li *ngFor="let noticia of noticias">
+      <h3>{{ noticia.Titulo }}</h3>
+      <p>{{ noticia.Contenido }}</p>
+      <img *ngIf="noticia.Imagen" [src]="noticia.Imagen" alt="{{ noticia.Titulo }}" />
+      <p>Coordenadas: {{ noticia.Latitud }}, {{ noticia.Longitud }}</p>
+      <button (click)="eliminarNoticia(noticia.IdNoticia)">Eliminar</button>
+    </li>
+  </ul>
+</div>
