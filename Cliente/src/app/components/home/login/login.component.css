@@ -92,3 +92,26 @@
   font-size: 1rem;
   color: #2b6adf;
 }
+
+.btn-discord {
+  display: inline-flex;
+  align-items: center;
+  background-color: #7289da; /* Color de fondo de Discord */
+  color: white; /* Color del texto */
+  padding: 10px 20px; /* Espaciado */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  text-decoration: none; /* Sin subrayado */
+}
+
+.btn-discord img {
+  margin-right: 8px; /* Espacio entre el ícono y el texto */
+}
+
+.discord-icon {
+  width: 24px; /* Ajusta el tamaño según sea necesario */
+  height: 24px; /* Mantiene la proporción */
+  border-radius: 50%; /* Hace que la imagen sea circular */
+  margin-right: 8px; /* Espacio entre el ícono y el texto */
+  object-fit: cover; /* Asegura que la imagen se recorte adecuadamente */
+}

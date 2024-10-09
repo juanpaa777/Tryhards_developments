@@ -1,0 +1,130 @@
+-- Eliminar la base de datos si ya existe
+DROP DATABASE IF EXISTS Biblioteca;
+
+-- Crear la base de datos
+CREATE DATABASE Biblioteca;
+
+-- Usar la base de datos
+USE Biblioteca;
+
+-- Crear tabla 'Lector'
+CREATE TABLE Lector (
+    NumeroControl VARCHAR(13) PRIMARY KEY,
+    NombreCompleto NVARCHAR(50) NOT NULL,
+    Correo NVARCHAR(100) NOT NULL,
+    CorreoConfirmado BOOLEAN DEFAULT FALSE,
+    TokenConfirmacion VARCHAR(40)
+);
+
+-- Crear tabla 'Noticias'
+CREATE TABLE Noticias (
+    IdNoticia INT AUTO_INCREMENT PRIMARY KEY,
+    Titulo NVARCHAR(100) NOT NULL,
+    Contenido TEXT NOT NULL,
+    Imagen NVARCHAR(255),
+    FechaPublicacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Latitud DECIMAL(15, 12),
+    Longitud DECIMAL(15, 12)
+);
+
+-- Insertar un registro en la tabla 'Noticias'
+INSERT INTO Noticias (Titulo, Contenido, Imagen, Latitud, Longitud) 
+VALUES ('dssds', 'sdsds', 'sds', 21.153495, -100.956612);
+
+-- Crear tabla 'Bibliotecario'
+CREATE TABLE Bibliotecario (
+    IdBibliotecario INT AUTO_INCREMENT PRIMARY KEY,
+    NombreCompleto NVARCHAR(50) NOT NULL,
+    Correo NVARCHAR(100) NOT NULL,
+    Telefono NVARCHAR(15) NOT NULL,
+    IdAdmin VARCHAR(10),
+    NombreUsuario NVARCHAR(50) NOT NULL UNIQUE,
+    Contrasena NVARCHAR(255) NOT NULL
+);
+
+-- Crear tabla 'Libro'
+CREATE TABLE Libro (
+    ISBN NVARCHAR(13) PRIMARY KEY,
+    Titulo NVARCHAR(100) NOT NULL,
+    Autor NVARCHAR(100) NOT NULL,
+    Tema NVARCHAR(100) NOT NULL,
+    Categoria NVARCHAR(100) NOT NULL,
+    Descripcion TEXT NOT NULL,
+    NumeroEjemplares INT NOT NULL,
+    Portada LONGBLOB
+);
+
+-- Crear tabla 'Prestamo'
+CREATE TABLE Prestamo (
+    IdPrestamo INT AUTO_INCREMENT PRIMARY KEY,
+    NumeroControl VARCHAR(13) NOT NULL,
+    ISBN NVARCHAR(13) NOT NULL,
+    FechaPrestamo DATE,
+    FechaDevolucion DATE,
+    IdBibliotecario INT,
+    Estado VARCHAR(30) DEFAULT 'Pendiente',
+    FOREIGN KEY (NumeroControl) REFERENCES Lector(NumeroControl),
+    FOREIGN KEY (ISBN) REFERENCES Libro(ISBN),
+    FOREIGN KEY (IdBibliotecario) REFERENCES Bibliotecario(IdBibliotecario)
+);
+
+-- Crear tabla 'Multas'
+CREATE TABLE Multas (
+    IdMulta INT AUTO_INCREMENT PRIMARY KEY,
+    NumeroControl VARCHAR(13) NOT NULL,
+    Monto DECIMAL(10, 2),
+    FechaInicio DATE,
+    Estatus NVARCHAR(50),
+    IdPrestamo INT,
+    FOREIGN KEY (NumeroControl) REFERENCES Lector(NumeroControl),
+    FOREIGN KEY (IdPrestamo) REFERENCES Prestamo(IdPrestamo)
+);
+
+-- Procedimiento para actualizar multas basadas en las fechas de devolución
+DELIMITER //
+
+CREATE PROCEDURE ActualizarMultas()
+BEGIN
+    DECLARE done INT DEFAULT 0;
+    DECLARE multaId INT;
+    DECLARE idPrestamo INT;
+    DECLARE cur CURSOR FOR SELECT IdMulta, IdPrestamo FROM Multas WHERE Estatus = 'Pendiente';
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
+
+    OPEN cur;
+
+    read_loop: LOOP
+        FETCH cur INTO multaId, idPrestamo;
+        IF done THEN
+            LEAVE read_loop;
+        END IF;
+
+        -- Actualizar el monto de la multa basado en los días de retraso
+        UPDATE Multas m
+        JOIN Prestamo p ON m.IdPrestamo = p.IdPrestamo
+        SET m.Monto = m.Monto + 5 * DATEDIFF(CURDATE(), p.FechaDevolucion)
+        WHERE m.IdMulta = multaId AND CURDATE() > p.FechaDevolucion;
+    END LOOP;
+
+    CLOSE cur;
+END //
+
+DELIMITER ;
+
+-- Evento para ejecutar la actualización de multas cada día
+DROP EVENT IF EXISTS ActualizarMultasCadaCincoMinutos;
+CREATE EVENT IF NOT EXISTS ActualizarMultasCadaCincoMinutos
+ON SCHEDULE EVERY 1 DAY
+DO
+    CALL ActualizarMultas();
+
+-- Consultas de ejemplo para verificar los datos
+SELECT * FROM Lector;
+SELECT * FROM Bibliotecario;
+SELECT * FROM Libro;
+SELECT * FROM Prestamo;
+SELECT * FROM Multas;
+
+-- Configurar el usuario 'root' sin contraseña
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
+FLUSH PRIVILEGES;

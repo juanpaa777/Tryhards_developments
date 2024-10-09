@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../../menu/Options/auth.service';
 import { AuthGoogleService } from './auth-google.service'; // Importar el servicio de Google
+import { AuthDiscordService } from './AuthDiscordService.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent {
   authData = { username: '', password: '', confirmPassword: '' };
   isRegisterMode = false;
 
-  constructor(public modal: NgbActiveModal, private router: Router, private modalService: NgbModal, private authService: AuthService, private authGoogleService: AuthGoogleService) {}
+  constructor(public modal: NgbActiveModal, private router: Router, private modalService: NgbModal, 
+    private authService: AuthService, private authGoogleService: AuthGoogleService, private authDiscordService: AuthDiscordService) {}
 
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
@@ -79,5 +81,9 @@ export class LoginComponent {
 
   loginWithGoogle() {
     this.authGoogleService.login(); // Llamar al método de inicio de sesión de Google
+  }
+
+  loginWithDiscord() {
+    this.authDiscordService.login();
   }
 }

@@ -67,12 +67,11 @@
     <div class="content-section" [ngClass]="{'full-width': isSidebarHidden}">
       <div *ngIf="showNoticias" class="carrusel-noticias show">
         <div class="noticias-carousel">
-          <div class="noticia-item" *ngFor="let noticia of noticiasItems">
+          <div class="noticia-item" *ngFor="let noticia of noticiasItems" (click)="verEventosCercanos()">
             <h3>{{ noticia.Titulo }}</h3>
             <p>{{ noticia.Contenido }}</p>
             <img *ngIf="noticia.Imagen" [src]="noticia.Imagen" alt="{{ noticia.Titulo }}" />
             <li><a (click)="verEventosCercanos()">Ver Locacion</a></li>
-
           </div>
         </div>
       </div>
