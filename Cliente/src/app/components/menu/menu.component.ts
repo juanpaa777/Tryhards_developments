@@ -1,7 +1,8 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { SidebarService } from '../menu/Options/Services/sidebar.services';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
+import { AuthDiscordService } from '../home/login/AuthDiscordService.service';
 
 @Component({
   selector: 'app-menu',
@@ -24,8 +25,9 @@ export class MenuComponent implements OnInit, OnDestroy {
   showGestionNoticias = false; // Nueva variable específica para gestionar noticias
   noticiasItems: any[] = [];
   private intervalId: any;
+  userProfile: any; // Añade esta línea para definir userProfile
 
-  constructor(private sidebarService: SidebarService, private http: HttpClient, private router: Router) {
+  constructor(private sidebarService: SidebarService, private http: HttpClient, private router: Router, private authDiscordService: AuthDiscordService) {
     this.sidebarService.sidebarHidden$.subscribe(hidden => this.isSidebarHidden = hidden);
   }
 
@@ -33,6 +35,10 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.cargarNoticias();
     this.iniciarDesplazamiento();
     this.showCarruselNoticias(); // Muestra el carrusel de noticias al iniciar
+    // Añade esta suscripción para obtener el perfil del usuario
+    this.authDiscordService.userProfile$.subscribe(profile => {
+      this.userProfile = profile;
+    });
   }
 
   ngOnDestroy() {
@@ -81,7 +87,6 @@ showCarruselNoticias() {
   this.resetViews(); // Resetea otras vistas
   this.showNoticias = true;
 }
-
 
   mostrarDevolucionDeLibros() {
     this.resetViews();
