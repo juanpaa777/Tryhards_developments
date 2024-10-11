@@ -40,6 +40,11 @@
           <mat-icon>account_circle</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
+          <div *ngIf="userProfile">
+            <img [src]="'https://cdn.discordapp.com/avatars/' + userProfile.id + '/' + userProfile.avatar + '.png'" alt="Avatar" style="width: 50px; height: 50px; border-radius: 50%;">
+            <p>{{ userProfile.username }}</p>
+            <p>{{ userProfile.email }}</p>  
+          </div>
           <button mat-menu-item (click)="logout()">
             <span>Cerrar Sesión</span>
           </button>

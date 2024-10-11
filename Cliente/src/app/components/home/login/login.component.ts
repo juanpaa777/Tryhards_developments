@@ -80,7 +80,30 @@ export class LoginComponent {
   }
 
   loginWithGoogle() {
-    this.authGoogleService.login(); // Llamar al método de inicio de sesión de Google
+    this.authGoogleService.login().then((googleUser: any) => {
+      if (googleUser) {
+        const email = googleUser.email;
+        const name = googleUser.name;
+        
+        // Llama al servicio de autenticación para registrar o iniciar sesión con Google
+        this.authService.loginOrRegisterWithGoogle(email, name).subscribe({
+          next: (response) => {
+            console.log('Respuesta del servidor', response);
+            alert(response.message);
+            localStorage.setItem('token', response.token);
+            this.modal.dismiss();
+            this.router.navigate(['/menu']); // Asegúrate de que esto coincida con tu ruta
+          },
+          error: (error: any) => {
+            console.error('Error:', error);
+            alert('Error al iniciar sesión con Google.');
+          }
+        });
+      }
+    }).catch((error: any) => {
+      console.error('Error al iniciar sesión con Google:', error);
+      alert('Error al iniciar sesión con Google.');
+    });
   }
 
   loginWithDiscord() {
