@@ -1,6 +1,6 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { SidebarService } from '../menu/Options/Services/sidebar.services';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthDiscordService } from '../home/login/AuthDiscordService.service';
 
@@ -26,6 +26,8 @@ export class MenuComponent implements OnInit, OnDestroy {
   noticiasItems: any[] = [];
   private intervalId: any;
   userProfile: any; // Añade esta línea para definir userProfile
+  showUserDetails = false;
+  userGuilds: any[] = [];
 
   constructor(private sidebarService: SidebarService, private http: HttpClient, private router: Router, private authDiscordService: AuthDiscordService) {
     this.sidebarService.sidebarHidden$.subscribe(hidden => this.isSidebarHidden = hidden);
@@ -35,10 +37,14 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.cargarNoticias();
     this.iniciarDesplazamiento();
     this.showCarruselNoticias(); // Muestra el carrusel de noticias al iniciar
-    // Añade esta suscripción para obtener el perfil del usuario
     this.authDiscordService.userProfile$.subscribe(profile => {
       this.userProfile = profile;
+      if (profile) {
+        console.log('Perfil recibido en el componente:', profile); // Añade un log para verificar los datos
+        this.fetchUserGuilds(); // Obtener los servidores del usuario si el perfil está disponible
+      }
     });
+    // Otros inicializadores
   }
 
   ngOnDestroy() {
@@ -151,5 +157,34 @@ private iniciarDesplazamiento() {
       }
     }
   }, 3000);
+}
+
+// Método para abrir el modal
+openUserDetails() {
+  this.showUserDetails = true;
+}
+
+// Método para cerrar el modal
+closeUserDetails() {
+  this.showUserDetails = false;
+}
+
+// Método para obtener los servidores del usuario
+fetchUserGuilds() {
+  const token = localStorage.getItem('token');
+  if (token) {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    this.http.get('https://discord.com/api/users/@me/guilds', { headers }).subscribe(
+      (guilds: any) => {
+        this.userGuilds = guilds;
+      },
+      error => {
+        console.error('Error al obtener los servidores del usuario:', error);
+      }
+    );
+  }
 }
 }

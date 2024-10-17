@@ -116,9 +116,39 @@ button[mat-icon-button] {
   gap: 20px;
 }
 
+.user-profile {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 2px solid #2B6ADF;
+}
 
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
 
+.username {
+  font-weight: bold;
+  color: #2B6ADF;
+  margin: 0;
+}
+
+.email {
+  font-size: 0.9em;
+  color: #555;
+  margin: 0;
+}
 
 .footer {
   background-color: #ffffff;
@@ -215,4 +245,39 @@ button[mat-icon-button] {
   object-fit: cover; /* Asegura que la imagen cubra el área del contenedor sin distorsionarse */
   border-radius: 5px; /* Mantiene el borde redondeado */
   margin-bottom: 10px;
+}
+
+.user-details-modal {
+  display: block; /* Cambia a 'none' para ocultar */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
