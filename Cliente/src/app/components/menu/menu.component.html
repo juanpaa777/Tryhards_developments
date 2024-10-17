@@ -69,6 +69,7 @@
         <li><a (click)="showRegistroBlibliotecarios()">Nuevos Bibliotecarios</a></li>
         <li><a (click)="mostrarDevolucionDeLibros()">Devolver Libros</a></li>
         <li><a (click)="verEventosCercanos()">Ver eventos cercanos</a></li>
+        <li><a (click)="showGoogleBooksSearch()">Buscar en Google Books</a></li> 
       </ul>
     </div>
 
@@ -107,6 +108,9 @@
       </div>
       <div *ngIf="showGestionNoticias">
         <app-noticias></app-noticias>
+      </div>
+      <div *ngIf="showGoogleBooks">
+        <app-google-books-search></app-google-books-search>
       </div>
     </div>
   </div>
