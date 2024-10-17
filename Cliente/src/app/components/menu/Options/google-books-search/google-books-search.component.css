@@ -1,0 +1,130 @@
+.search-books-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    min-height: 100vh; /* Asegura que ocupe al menos toda la altura de la ventana */
+    background-color: transparent; /* Fondo transparente para el contenedor */
+}
+
+.search-books {
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco transparente */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px; /* Espaciado interno */
+    width: 100%; /* Ancho completo */
+    max-width: 900px; /* Ancho máximo */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos dentro del buscador */
+}
+
+.search-header .title {
+    font-family: 'Georgia', serif;
+    font-size: 2.5em;
+    color: #2c3e50; 
+    text-align: center; 
+    margin-bottom: 20px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    font-weight: bold; 
+}
+
+.search-header input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px; /* Espacio entre los elementos */
+}
+
+.filter-select {
+    padding: 12px; /* Espaciado interno */
+    font-size: 1em; /* Tamaño de fuente */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+    width: 100%; /* Ancho completo en pantallas pequeñas */
+    max-width: 200px; /* Ancho máximo */
+}
+
+.filter-select:focus {
+    border-color: #4A90E2; /* Color del borde al enfocar */
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.5); /* Sombra al enfocar */
+}
+
+.search-button {
+    background-color: #4A90E2; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 12px 20px; /* Espaciado interno */
+    font-size: 1em; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones */
+    margin: 5px; /* Margen */
+}
+
+.search-button:hover {
+    background-color: #0056b3; /* Color al pasar el mouse */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+.search-button:active {
+    transform: scale(0.95); /* Reduce el tamaño al hacer clic */
+}
+
+.loading-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    color: #2c3e50;
+    z-index: 10; /* Asegúrate de que esté por encima de otros elementos */
+}
+
+.results-container {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+.book {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: calc(33.333% - 40px);
+    box-sizing: border-box;
+    position: relative;
+}
+
+.book img.book-cover {
+    width: 190px;
+    height: 280px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}

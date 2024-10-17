@@ -1,0 +1,23 @@
+<div class="google-books-search">
+  <div class="search-header">
+    <h2 class="title">Buscar Libros en Google Books</h2>
+    <input 
+      type="text" 
+      placeholder="Buscar por título, autor, ISBN..." 
+      [(ngModel)]="searchQuery" 
+      (keydown.enter)="searchBooks()">
+    <button class="search-button" (click)="searchBooks()">Buscar</button>
+  </div>
+  <div *ngIf="loading" class="loading-screen">Cargando...</div>
+  <div class="results-container" *ngIf="!loading">
+    <div class="results">
+      <div *ngFor="let book of books" class="book">
+        <img [src]="book.thumbnail" alt="{{ book.title }}" class="book-cover">
+        <h3>{{ book.title }}</h3>
+        <p><strong>Autor(es):</strong> {{ book.authors.join(', ') }}</p>
+        <p><strong>Descripción:</strong> {{ book.description }}</p>
+        <a [href]="book.infoLink" target="_blank" class="btn-custom">Más información</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -23,6 +23,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   showNoticias = false;
   showDevolucionDeLibros = false;
   showGestionNoticias = false; // Nueva variable específica para gestionar noticias
+  showGoogleBooks = false;
   noticiasItems: any[] = [];
   private intervalId: any;
   userProfile: any; // Añade esta línea para definir userProfile
@@ -103,6 +104,10 @@ showCarruselNoticias() {
     this.resetViews(); // Asegúrate de que se llame a resetViews aquí
     this.router.navigate(['/mapa']); // Asegúrate de que la ruta '/mapa' esté configurada en tu enrutador
   }
+  showGoogleBooksSearch() {
+    this.resetViews();
+    this.showGoogleBooks = true; // Mostrar el componente de Google Books
+  }
 
   toggleDropdown() {
     this.isDropdownVisible = !this.isDropdownVisible;
@@ -128,6 +133,7 @@ private resetViews() {
   this.showReporte = false;
   this.showDevolucionDeLibros = false;
   this.showGestionNoticias = false; // Asegúrate de resetear esta vista también
+  this.showGoogleBooks = false; 
 }
 
 @HostListener('window:scroll', [])
