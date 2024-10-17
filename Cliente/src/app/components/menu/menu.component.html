@@ -40,10 +40,12 @@
           <mat-icon>account_circle</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <div *ngIf="userProfile">
-            <img [src]="'https://cdn.discordapp.com/avatars/' + userProfile.id + '/' + userProfile.avatar + '.png'" alt="Avatar" style="width: 50px; height: 50px; border-radius: 50%;">
-            <p>{{ userProfile.username }}</p>
-            <p>{{ userProfile.email }}</p>  
+          <div *ngIf="userProfile" class="user-profile" (click)="openUserDetails()">
+            <img [src]="'https://cdn.discordapp.com/avatars/' + userProfile.id + '/' + userProfile.avatar + '.png'" alt="Avatar" class="avatar">
+            <div class="user-info">
+              <p class="username">{{ userProfile.username }}</p>
+             
+            </div>
           </div>
           <button mat-menu-item (click)="logout()">
             <span>Cerrar Sesión</span>
@@ -52,6 +54,7 @@
       </div>
     </div>
   </div>
+
 
   <div class="main-layout">
     <div class="sidebar" id="sidebar" [ngClass]="{'hidden': isSidebarHidden}">
@@ -113,4 +116,23 @@
       <p>&copy; 2024 Universidad Tecnológica del Norte de Guanajuato. Todos los derechos reservados.</p>
     </div>
   </footer>
+
+  <!-- Modal para mostrar detalles del usuario -->
+  <div *ngIf="showUserDetails" class="user-details-modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeUserDetails()">&times;</span>
+      <h2>Detalles del Usuario</h2>
+      <p><strong>Nombre:</strong> {{ userProfile.username }}</p>
+      <p><strong>Email:</strong> {{ userProfile.email }}</p>
+      <p><strong>Idioma:</strong> {{ userProfile.locale }}</p> <!-- Muestra el idioma del usuario -->
+      <p><strong>Servidores:</strong></p>
+      <ul>
+        <li *ngFor="let guild of userGuilds">{{ guild.name }}</li>
+      </ul>
+      <p><strong>Conexiones:</strong></p>
+      <ul>
+        <li *ngFor="let connection of userProfile.connections">{{ connection.type }}: {{ connection.name }}</li>
+      </ul>
+    </div>
+  </div>
 </body>

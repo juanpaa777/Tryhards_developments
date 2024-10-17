@@ -22,7 +22,7 @@ const routes: Routes = [
     redirectTo : 'home',
     pathMatch : 'full'
   },
-  { path: 'menu', component: MenuComponent,canActivate: [AuthGuard]},
+  { path: 'menu', component: MenuComponent},
   { path: 'home', component: HomeComponent}, 
   { path: 'error', component: ErrorComponent },
   {path:'login',component:LoginComponent,canActivate: [AuthGuard]},
