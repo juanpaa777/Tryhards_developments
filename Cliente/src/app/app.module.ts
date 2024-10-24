@@ -31,7 +31,9 @@ import { MapaComponent } from './components/mapa/mapa.component';
 import { NoticiasComponent } from './components/menu/Options/noticias/noticias.component';
 import { LoginComponent } from './components/home/login/login.component';
 import { OAuthModule } from 'angular-oauth2-oidc';
-import { GoogleBooksSearchComponent } from './components/menu/Options/google-books-search/google-books-search.component'; // Importar el módulo
+import { GoogleBooksSearchComponent } from './components/menu/Options/google-books-search/google-books-search.component';
+import { PagoMultasComponent } from './menu/Options/pago-multas/pago-multas.component';
+import { PaypalButtonComponent } from './components/menu/Options/paypal-button/paypal-button.component'; // Importar el módulo
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { GoogleBooksSearchComponent } from './components/menu/Options/google-boo
     MapaComponent,
     NoticiasComponent,
     GoogleBooksSearchComponent,
+    PagoMultasComponent,
+    PaypalButtonComponent,
     
     
   ],
