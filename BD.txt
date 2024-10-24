@@ -128,3 +128,6 @@ SELECT * FROM Multas;
 -- Configurar el usuario 'root' sin contraseña
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
 FLUSH PRIVILEGES;
+
+
+--Hola esta es la prueba git
