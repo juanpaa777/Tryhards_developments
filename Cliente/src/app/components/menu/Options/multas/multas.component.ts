@@ -15,6 +15,7 @@ export class MultasComponent implements OnInit {
   isEditing = false;
   alertMessage: string | null = null;
   alertType: 'success' | 'error' = 'success';
+  showPayPal = false; // Nueva propiedad para mostrar el componente de PayPal
 
   constructor(private multasService: MultasService) { }
 
@@ -177,6 +178,18 @@ export class MultasComponent implements OnInit {
     }, 3000);
   
 }
+
+  initiatePayment(): void {
+    if (this.selectedMulta) {
+      this.showPayPal = true; // Mostrar el componente de PayPal
+    } else {
+      this.showAlert('Por favor, selecciona una multa para pagar.', 'error');
+    }
+  }
+
+  handlePaymentSuccess(): void {
+    this.showAlert('Pago realizado exitosamente', 'success');
+    this.showPayPal = false; // Ocultar el componente de PayPal
+    this.loadMultas(); // Recargar las multas después del pago
+  }
 }
-
-
