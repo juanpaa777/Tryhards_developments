@@ -29,6 +29,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   userProfile: any; // Añade esta línea para definir userProfile
   showUserDetails = false;
   userGuilds: any[] = [];
+  showPayPal = false; // Variable para controlar la vista de PayPal
 
   constructor(private sidebarService: SidebarService, private http: HttpClient, private router: Router, private authDiscordService: AuthDiscordService) {
     this.sidebarService.sidebarHidden$.subscribe(hidden => this.isSidebarHidden = hidden);
@@ -122,75 +123,81 @@ showCarruselNoticias() {
     this.router.navigate(['/home']); // Redirige a la página de inicio de sesión
   }
 
-// Método para resetear las vistas
-private resetViews() {
-  this.showNoticias = false;
-  this.showSearch = false;
-  this.showNewBooks = false;
-  this.showMultas = false;
-  this.showRegistroBibliotecarios = false; // Cambiado para bibliotecarios
-  this.showLectores = false;
-  this.showReporte = false;
-  this.showDevolucionDeLibros = false;
-  this.showGestionNoticias = false; // Asegúrate de resetear esta vista también
-  this.showGoogleBooks = false; 
-}
-
-@HostListener('window:scroll', [])
-onWindowScroll() {
-  const windowHeight = window.innerHeight || document.documentElement.offsetHeight;
-  const docHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-  const windowBottom = windowHeight + window.pageYOffset;
-  this.isFooterVisible = windowBottom >= docHeight;
-}
-
-private cargarNoticias() {
-  this.http.get<any[]>('http://localhost:3000/noticias').subscribe(data => {
-    this.noticiasItems = data;
-  }, error => {
-    console.error('Error al cargar noticias:', error);
-  });
-}
-
-private iniciarDesplazamiento() {
-  this.intervalId = setInterval(() => {
-    const carousel = document.querySelector('.noticias-carousel') as HTMLElement;
-    if (carousel) {
-      carousel.scrollBy({ left: 400, behavior: 'smooth' });
-      // Reiniciar la posición si llega al final
-      if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth) {
-        carousel.scrollLeft = 0; // Regresar a la posición inicial
-      }
-    }
-  }, 3000);
-}
-
-// Método para abrir el modal
-openUserDetails() {
-  this.showUserDetails = true;
-}
-
-// Método para cerrar el modal
-closeUserDetails() {
-  this.showUserDetails = false;
-}
-
-// Método para obtener los servidores del usuario
-fetchUserGuilds() {
-  const token = localStorage.getItem('token');
-  if (token) {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-
-    this.http.get('https://discord.com/api/users/@me/guilds', { headers }).subscribe(
-      (guilds: any) => {
-        this.userGuilds = guilds;
-      },
-      error => {
-        console.error('Error al obtener los servidores del usuario:', error);
-      }
-    );
+  displayPayPal() { // Renombrado para evitar conflicto
+    this.resetViews();
+    this.showPayPal = true; // Mostrar el componente de PayPal
   }
-}
+
+  // Método para resetear las vistas
+  private resetViews() {
+    this.showNoticias = false;
+    this.showSearch = false;
+    this.showNewBooks = false;
+    this.showMultas = false;
+    this.showRegistroBibliotecarios = false; // Cambiado para bibliotecarios
+    this.showLectores = false;
+    this.showReporte = false;
+    this.showDevolucionDeLibros = false;
+    this.showGestionNoticias = false; // Asegúrate de resetear esta vista también
+    this.showGoogleBooks = false; 
+    this.showPayPal = false; // Asegúrate de resetear esta vista también
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const windowHeight = window.innerHeight || document.documentElement.offsetHeight;
+    const docHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    const windowBottom = windowHeight + window.pageYOffset;
+    this.isFooterVisible = windowBottom >= docHeight;
+  }
+
+  private cargarNoticias() {
+    this.http.get<any[]>('http://localhost:3000/noticias').subscribe(data => {
+      this.noticiasItems = data;
+    }, error => {
+      console.error('Error al cargar noticias:', error);
+    });
+  }
+
+  private iniciarDesplazamiento() {
+    this.intervalId = setInterval(() => {
+      const carousel = document.querySelector('.noticias-carousel') as HTMLElement;
+      if (carousel) {
+        carousel.scrollBy({ left: 400, behavior: 'smooth' });
+        // Reiniciar la posición si llega al final
+        if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth) {
+          carousel.scrollLeft = 0; // Regresar a la posición inicial
+        }
+      }
+    }, 3000);
+  }
+
+  // Método para abrir el modal
+  openUserDetails() {
+    this.showUserDetails = true;
+  }
+
+  // Método para cerrar el modal
+  closeUserDetails() {
+    this.showUserDetails = false;
+  }
+
+  // Método para obtener los servidores del usuario
+  fetchUserGuilds() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+
+      this.http.get('https://discord.com/api/users/@me/guilds', { headers }).subscribe(
+        (guilds: any) => {
+          this.userGuilds = guilds;
+        },
+        error => {
+          console.error('Error al obtener los servidores del usuario:', error);
+        }
+      );
+    }
+  }
 }

@@ -1,0 +1,32 @@
+.paypal-container {
+  max-width: 400px; /* Ancho máximo del contenedor */
+  margin: 20px auto; /* Centrar el contenedor */
+  padding: 20px; /* Espaciado interno */
+  border: 1px solid #e0e0e0; /* Borde ligero */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  background-color: #ffffff; /* Fondo blanco */
+  text-align: center; /* Centrar texto */
+}
+
+.paypal-title {
+  font-size: 24px; /* Tamaño de fuente del título */
+  margin-bottom: 10px; /* Espaciado inferior */
+  color: #333; /* Color del texto */
+}
+
+.paypal-description {
+  font-size: 16px; /* Tamaño de fuente de la descripción */
+  margin-bottom: 20px; /* Espaciado inferior */
+  color: #666; /* Color del texto */
+}
+
+.paypal-button {
+  margin: 20px 0; /* Espaciado superior e inferior */
+}
+
+.paypal-note {
+  font-size: 14px; /* Tamaño de fuente de la nota */
+  color: #999; /* Color del texto */
+}
+
