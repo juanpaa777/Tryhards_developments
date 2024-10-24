@@ -1,4 +1,4 @@
--- Eliminar la base de datos si ya existe HOla amigo diego como estas
+-- Eliminar la base de datos si ya existe 
 DROP DATABASE IF EXISTS Biblioteca;
 
 -- Crear la base de datos
@@ -128,6 +128,3 @@ SELECT * FROM Multas;
 -- Configurar el usuario 'root' sin contraseña
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
 FLUSH PRIVILEGES;
-Ahora paketin es gay
-
--- Hola mi nombre es mateo ehhhh no me importaa yo bapooooo|
