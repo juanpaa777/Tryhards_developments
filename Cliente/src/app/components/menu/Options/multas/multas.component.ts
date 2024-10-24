@@ -15,6 +15,7 @@ export class MultasComponent implements OnInit {
   isEditing = false;
   alertMessage: string | null = null;
   alertType: 'success' | 'error' = 'success';
+  
 
   constructor(private multasService: MultasService) { }
 
