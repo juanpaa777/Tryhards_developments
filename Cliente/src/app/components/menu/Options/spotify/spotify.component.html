@@ -1,0 +1,8 @@
+<button (click)="loginWithSpotify()">Login with Spotify</button>
+
+<input type="text" [(ngModel)]="searchQuery" placeholder="Busca tu libro">
+<button (click)="searchAudiobooks01()">Buscar Libro</button>
+
+<div *ngFor="let song of searchResults">
+  {{ song.name }} - {{ song.artists[0].name }}
+</div>
