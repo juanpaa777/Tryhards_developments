@@ -71,6 +71,7 @@
         <li><a (click)="verEventosCercanos()">Ver eventos cercanos</a></li>
         <li><a (click)="showGoogleBooksSearch()">Buscar en Google Books</a></li> 
         <li><a (click)="displayPayPal()">Pagar con PayPal</a></li> <!-- Usar el nuevo nombre del método -->
+        <li><a (click)="displaySpotify()">Spotify</a></li>
       </ul>
     </div>
 
@@ -114,6 +115,9 @@
       </div>
       <div *ngIf="showGoogleBooks">
         <app-google-books-search></app-google-books-search>
+      </div>
+      <div *ngIf="showSpotifyComponent">
+        <app-spotify></app-spotify>
       </div>
     </div>
   </div>

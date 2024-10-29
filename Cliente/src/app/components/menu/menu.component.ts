@@ -30,6 +30,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   showUserDetails = false;
   userGuilds: any[] = [];
   showPayPal = false; // Variable para controlar la vista de PayPal
+  showSpotifyComponent = false;
 
   constructor(private sidebarService: SidebarService, private http: HttpClient, private router: Router, private authDiscordService: AuthDiscordService) {
     this.sidebarService.sidebarHidden$.subscribe(hidden => this.isSidebarHidden = hidden);
@@ -110,6 +111,11 @@ showCarruselNoticias() {
     this.showGoogleBooks = true; // Mostrar el componente de Google Books
   }
 
+  displaySpotify() {
+    this.resetViews();
+    this.showSpotifyComponent = true; // Mostrar el componente de Spotify
+  }
+
   toggleDropdown() {
     this.isDropdownVisible = !this.isDropdownVisible;
   }
@@ -141,6 +147,7 @@ showCarruselNoticias() {
     this.showGestionNoticias = false; // Asegúrate de resetear esta vista también
     this.showGoogleBooks = false; 
     this.showPayPal = false; // Asegúrate de resetear esta vista también
+    this.showSpotifyComponent = false; // Asegúrate de resetear esta vista también
   }
 
   @HostListener('window:scroll', [])
@@ -200,4 +207,5 @@ showCarruselNoticias() {
       );
     }
   }
+
 }
