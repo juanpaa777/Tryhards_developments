@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 const dbConfig = {
   host: 'localhost',
   user: 'root',
-  password: 'samael',
+  password: '123456',
   database: 'Biblioteca'
 };
 
