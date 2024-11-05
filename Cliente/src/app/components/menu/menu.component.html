@@ -44,7 +44,6 @@
             <img [src]="'https://cdn.discordapp.com/avatars/' + userProfile.id + '/' + userProfile.avatar + '.png'" alt="Avatar" class="avatar">
             <div class="user-info">
               <p class="username">{{ userProfile.username }}</p>
-             
             </div>
           </div>
           <button mat-menu-item (click)="logout()">
@@ -52,10 +51,9 @@
           </button>
         </mat-menu>
       </div>
-      <button mat-button (click)="showAudiolibros()">Ver Audiolibros</button>
+      
     </div>
   </div>
-
 
   <div class="main-layout">
     <div class="sidebar" id="sidebar" [ngClass]="{'hidden': isSidebarHidden}">
@@ -72,14 +70,14 @@
         <li><a (click)="verEventosCercanos()">Ver eventos cercanos</a></li>
         <li><a (click)="showGoogleBooksSearch()">Buscar en Google Books</a></li> 
         <li><a (click)="displayPayPal()">Pagar con PayPal</a></li>
-        <li><a (click)="displaySpotify()">Spotify</a></li>
+        <li><a (click)="showArchive()">Ver Archive.org</a></li>
       </ul>
     </div>
 
     <div class="content-section" [ngClass]="{'full-width': isSidebarHidden}">
-      <div *ngIf="isAudiolibrosVisible">
-        <app-libribox></app-libribox>
-      </div>
+      
+    
+      
       <div *ngIf="showNoticias" class="carrusel-noticias show">
         <div class="noticias-carousel">
           <div class="noticia-item" *ngFor="let noticia of noticiasItems" (click)="verEventosCercanos()">
@@ -120,9 +118,10 @@
       <div *ngIf="showGoogleBooks">
         <app-google-books-search></app-google-books-search>
       </div>
-      <div *ngIf="showSpotifyComponent">
-        <app-spotify></app-spotify>
+      <div *ngIf="isArchiveVisible">
+        <app-archive></app-archive>
       </div>
+  
     </div>
   </div>
 

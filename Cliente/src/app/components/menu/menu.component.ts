@@ -24,14 +24,13 @@ export class MenuComponent implements OnInit, OnDestroy {
   showDevolucionDeLibros = false;
   showGestionNoticias = false;
   showGoogleBooks = false;
-  isAudiolibrosVisible = false;
+  isArchiveVisible = false;
   noticiasItems: any[] = [];
   private intervalId: any;
   userProfile: any;
   showUserDetails = false;
   userGuilds: any[] = [];
   showPayPal = false;
-  showSpotifyComponent = false;
 
   constructor(private sidebarService: SidebarService, private http: HttpClient, private router: Router, private authDiscordService: AuthDiscordService) {
     this.sidebarService.sidebarHidden$.subscribe(hidden => this.isSidebarHidden = hidden);
@@ -48,7 +47,6 @@ export class MenuComponent implements OnInit, OnDestroy {
         this.fetchUserGuilds();
       }
     });
-    // Otros inicializadores
   }
 
   ngOnDestroy() {
@@ -115,9 +113,9 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.showGoogleBooks = true; // Mostrar el componente de Google Books
   }
 
-  displaySpotify() {
+  showArchive() {
     this.resetViews();
-    this.showSpotifyComponent = true; // Mostrar el componente de Spotify
+    this.isArchiveVisible = true;
   }
 
   toggleDropdown() {
@@ -138,11 +136,6 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.showPayPal = true; // Mostrar el componente de PayPal
   }
 
-  showAudiolibros() {
-    this.resetViews();
-    this.isAudiolibrosVisible = true;
-  }
-
   private resetViews() {
     this.showNoticias = false;
     this.showSearch = false;
@@ -155,8 +148,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.showGestionNoticias = false;
     this.showGoogleBooks = false;
     this.showPayPal = false;
-    this.showSpotifyComponent = false;
-    this.isAudiolibrosVisible = false;
+    this.isArchiveVisible = false;
   }
 
   @HostListener('window:scroll', [])
