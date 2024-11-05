@@ -15,7 +15,6 @@ import { ErrorComponent } from './components/home/error/error.component';
 import { MapaComponent } from './components/mapa/mapa.component';
 import { LoginComponent } from './components/home/login/login.component';
 import { GoogleBooksSearchComponent } from './components/menu/Options/google-books-search/google-books-search.component';
-import { SpotifyComponent } from './components/menu/Options/spotify/spotify.component';
 
 const routes: Routes = [
   
@@ -39,7 +38,6 @@ const routes: Routes = [
   { path: 'mapa', component: MapaComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] }, 
   { path: 'google-books-search', component: GoogleBooksSearchComponent },
-  { path: 'spotify',component: SpotifyComponent}
 ];
 
 @NgModule({

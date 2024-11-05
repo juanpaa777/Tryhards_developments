@@ -1,0 +1,38 @@
+<div class="archive-container">
+    <h2>Búsqueda en Archive.org</h2>
+    <div class="search-bar">
+        <input type="text" [(ngModel)]="searchQuery" placeholder="Buscar..." />
+        <button (click)="searchItems()">Buscar</button>
+    </div>
+
+    <div class="filter-container">
+        <label for="category">Selecciona una categoría:</label>
+        <select id="category" [(ngModel)]="selectedCategory">
+            <option value="">Todas</option>
+            <option value="audio">Audiolibros</option>
+            <option value="video">Videos</option>
+            <option value="text">Archivos de texto</option>
+            <!-- Agrega más categorías según sea necesario -->
+        </select>
+    </div>
+
+    <div *ngIf="items.length > 0" class="results-container">
+        <h3>Resultados de búsqueda:</h3>
+        <ul>
+            <li *ngFor="let item of filteredItems()" class="result-item">
+                <a [href]="'https://archive.org/details/' + item.identifier" target="_blank">
+                    <h4>{{ item.title }}</h4>
+                    <p>ID: {{ item.identifier }}</p>
+                </a>
+                <img *ngIf="item.cover" [src]="item.cover" alt="Portada de {{ item.title }}" class="cover-image" />
+                <audio *ngIf="item.audioUrl" controls>
+                    <source [src]="item.audioUrl" type="audio/mpeg">
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="items.length === 0">
+        <p>No se encontraron elementos.</p>
+    </div>
+</div>

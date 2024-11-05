@@ -34,8 +34,8 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 import { GoogleBooksSearchComponent } from './components/menu/Options/google-books-search/google-books-search.component';
 import { PagoMultasComponent } from './menu/Options/pago-multas/pago-multas.component';
 import { PaypalButtonComponent } from './components/menu/Options/paypal-button/paypal-button.component';
-import { SpotifyComponent } from './components/menu/Options/spotify/spotify.component';
-import { LibriboxComponent } from './components/menu/libribox/libribox.component';
+import { ArchiveComponent } from './components/menu/Options/archive/archive.component';
+
 
 
 
@@ -60,8 +60,7 @@ import { LibriboxComponent } from './components/menu/libribox/libribox.component
     GoogleBooksSearchComponent,
     PagoMultasComponent,
     PaypalButtonComponent,
-    SpotifyComponent,
-    LibriboxComponent,
+    ArchiveComponent,
  
     
     
