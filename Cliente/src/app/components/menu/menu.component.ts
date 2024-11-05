@@ -15,21 +15,22 @@ export class MenuComponent implements OnInit, OnDestroy {
   showSearch = false;
   showNewBooks = false;
   showMultas = false;
-  showRegistroBibliotecarios = false; // Cambia showRegistro por un nombre específico
+  showRegistroBibliotecarios = false;
   isDropdownVisible = false;
   showLectores = false;
   showReporte = false;
   isFooterVisible = false;
   showNoticias = false;
   showDevolucionDeLibros = false;
-  showGestionNoticias = false; // Nueva variable específica para gestionar noticias
+  showGestionNoticias = false;
   showGoogleBooks = false;
+  isAudiolibrosVisible = false;
   noticiasItems: any[] = [];
   private intervalId: any;
-  userProfile: any; // Añade esta línea para definir userProfile
+  userProfile: any;
   showUserDetails = false;
   userGuilds: any[] = [];
-  showPayPal = false; // Variable para controlar la vista de PayPal
+  showPayPal = false;
   showSpotifyComponent = false;
 
   constructor(private sidebarService: SidebarService, private http: HttpClient, private router: Router, private authDiscordService: AuthDiscordService) {
@@ -39,24 +40,25 @@ export class MenuComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.cargarNoticias();
     this.iniciarDesplazamiento();
-    this.showCarruselNoticias(); // Muestra el carrusel de noticias al iniciar
+    this.showCarruselNoticias();
     this.authDiscordService.userProfile$.subscribe(profile => {
       this.userProfile = profile;
       if (profile) {
-        console.log('Perfil recibido en el componente:', profile); // Añade un log para verificar los datos
-        this.fetchUserGuilds(); // Obtener los servidores del usuario si el perfil está disponible
+        console.log('Perfil recibido en el componente:', profile);
+        this.fetchUserGuilds();
       }
     });
     // Otros inicializadores
   }
 
   ngOnDestroy() {
-    clearInterval(this.intervalId); // Limpia el intervalo
+    clearInterval(this.intervalId);
   }
 
   toggleSidebar() {
     this.sidebarService.toggleSidebar();
   }
+
   showSearchBooks() {
     this.resetViews();
     this.showSearch = true;
@@ -89,13 +91,14 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   showGestionarNoticias() {
     this.resetViews();
-    this.showGestionNoticias = true; // Controla el componente de gestión de noticias
+    this.showGestionNoticias = true;
     this.cargarNoticias();
   }
-showCarruselNoticias() {
-  this.resetViews(); // Resetea otras vistas
-  this.showNoticias = true;
-}
+
+  showCarruselNoticias() {
+    this.resetViews();
+    this.showNoticias = true;
+  }
 
   mostrarDevolucionDeLibros() {
     this.resetViews();
@@ -106,6 +109,7 @@ showCarruselNoticias() {
     this.resetViews(); // Asegúrate de que se llame a resetViews aquí
     this.router.navigate(['/mapa']); // Asegúrate de que la ruta '/mapa' esté configurada en tu enrutador
   }
+
   showGoogleBooksSearch() {
     this.resetViews();
     this.showGoogleBooks = true; // Mostrar el componente de Google Books
@@ -134,20 +138,25 @@ showCarruselNoticias() {
     this.showPayPal = true; // Mostrar el componente de PayPal
   }
 
-  // Método para resetear las vistas
+  showAudiolibros() {
+    this.resetViews();
+    this.isAudiolibrosVisible = true;
+  }
+
   private resetViews() {
     this.showNoticias = false;
     this.showSearch = false;
     this.showNewBooks = false;
     this.showMultas = false;
-    this.showRegistroBibliotecarios = false; // Cambiado para bibliotecarios
+    this.showRegistroBibliotecarios = false;
     this.showLectores = false;
     this.showReporte = false;
     this.showDevolucionDeLibros = false;
-    this.showGestionNoticias = false; // Asegúrate de resetear esta vista también
-    this.showGoogleBooks = false; 
-    this.showPayPal = false; // Asegúrate de resetear esta vista también
-    this.showSpotifyComponent = false; // Asegúrate de resetear esta vista también
+    this.showGestionNoticias = false;
+    this.showGoogleBooks = false;
+    this.showPayPal = false;
+    this.showSpotifyComponent = false;
+    this.isAudiolibrosVisible = false;
   }
 
   @HostListener('window:scroll', [])
@@ -171,15 +180,13 @@ showCarruselNoticias() {
       const carousel = document.querySelector('.noticias-carousel') as HTMLElement;
       if (carousel) {
         carousel.scrollBy({ left: 400, behavior: 'smooth' });
-        // Reiniciar la posición si llega al final
         if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth) {
-          carousel.scrollLeft = 0; // Regresar a la posición inicial
+          carousel.scrollLeft = 0;
         }
       }
     }, 3000);
   }
 
-  // Método para abrir el modal
   openUserDetails() {
     this.showUserDetails = true;
   }
@@ -207,5 +214,4 @@ showCarruselNoticias() {
       );
     }
   }
-
 }

@@ -52,6 +52,7 @@
           </button>
         </mat-menu>
       </div>
+      <button mat-button (click)="showAudiolibros()">Ver Audiolibros</button>
     </div>
   </div>
 
@@ -70,12 +71,15 @@
         <li><a (click)="mostrarDevolucionDeLibros()">Devolver Libros</a></li>
         <li><a (click)="verEventosCercanos()">Ver eventos cercanos</a></li>
         <li><a (click)="showGoogleBooksSearch()">Buscar en Google Books</a></li> 
-        <li><a (click)="displayPayPal()">Pagar con PayPal</a></li> <!-- Usar el nuevo nombre del método -->
+        <li><a (click)="displayPayPal()">Pagar con PayPal</a></li>
         <li><a (click)="displaySpotify()">Spotify</a></li>
       </ul>
     </div>
 
     <div class="content-section" [ngClass]="{'full-width': isSidebarHidden}">
+      <div *ngIf="isAudiolibrosVisible">
+        <app-libribox></app-libribox>
+      </div>
       <div *ngIf="showNoticias" class="carrusel-noticias show">
         <div class="noticias-carousel">
           <div class="noticia-item" *ngFor="let noticia of noticiasItems" (click)="verEventosCercanos()">

@@ -1,0 +1,11 @@
+<div *ngIf="books.length > 0; else noBooks">
+    <h2>Libros de Librivox</h2>
+    <ul>
+      <li *ngFor="let book of books">
+        {{ book.title }} - {{ book.author }} <!-- Ajusta según la estructura de los datos -->
+      </li>
+    </ul>
+  </div>
+  <ng-template #noBooks>
+    <p>No hay libros disponibles.</p>
+  </ng-template>
