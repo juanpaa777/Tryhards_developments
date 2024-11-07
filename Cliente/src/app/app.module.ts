@@ -35,9 +35,7 @@ import { GoogleBooksSearchComponent } from './components/menu/Options/google-boo
 import { PagoMultasComponent } from './menu/Options/pago-multas/pago-multas.component';
 import { PaypalButtonComponent } from './components/menu/Options/paypal-button/paypal-button.component';
 import { ArchiveComponent } from './components/menu/Options/archive/archive.component';
-
-
-
+import { TwilioComponent } from './components/menu/Options/twilio/twilio.component';
 
 @NgModule({
   declarations: [
@@ -61,9 +59,7 @@ import { ArchiveComponent } from './components/menu/Options/archive/archive.comp
     PagoMultasComponent,
     PaypalButtonComponent,
     ArchiveComponent,
- 
-    
-    
+    TwilioComponent,
   ],
   imports: [
     BrowserModule,
