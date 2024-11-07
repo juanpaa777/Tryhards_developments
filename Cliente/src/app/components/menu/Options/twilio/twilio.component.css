@@ -1,0 +1,101 @@
+/* twilio.component.css */
+.container {
+    position: relative;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    max-width: 600px; /* Ancho máximo del contenedor */
+    margin: 20px auto; /* Centrar el contenedor */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    font-family: 'Georgia', serif;
+    font-size: 2.5em;
+    color: #2c3e50; 
+    text-align: center; 
+    margin-bottom: 20px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    font-weight: bold; 
+}
+
+label {
+    display: block; /* Mostrar como bloque */
+    margin-bottom: 5px; /* Espaciado inferior */
+    font-weight: bold; /* Negrita */
+    color: #555; /* Color del texto */
+}
+
+input, textarea {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 15px; /* Espaciado inferior */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluir padding y border en el ancho total */
+    font-size: 16px; /* Tamaño de fuente */
+}
+
+textarea {
+    resize: vertical; /* Permitir redimensionar verticalmente */
+    min-height: 100px; /* Altura mínima */
+}
+
+button {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espaciado interno */
+    background-color: #4A90E2; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    font-size: 16px; /* Tamaño de fuente */
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones */
+    margin: 5px; /* Margen */
+}
+
+button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el mouse */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+button:active {
+    transform: scale(0.95); /* Reduce el tamaño al hacer clic */
+}
+
+.error-message {
+    color: red; /* Color rojo para mensajes de error */
+    font-size: 14px; /* Tamaño de fuente */
+    margin-top: -10px; /* Espaciado negativo para acercar al campo */
+    margin-bottom: 10px; /* Espaciado inferior */
+}
+
+.alert {
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.alert-success {
+    background-color: #d4edda; /* Color de fondo para éxito */
+    color: #155724; /* Color del texto para éxito */
+    border: 1px solid #c3e6cb; /* Borde para éxito */
+}
+
+.alert-error {
+    background-color: #f8d7da; /* Color de fondo para error */
+    color: #721c24; /* Color del texto para error */
+    border: 1px solid #f5c6cb; /* Borde para error */
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
