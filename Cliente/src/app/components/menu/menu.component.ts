@@ -31,6 +31,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   showUserDetails = false;
   userGuilds: any[] = [];
   showPayPal = false;
+  showTwilio = false;
 
   constructor(private sidebarService: SidebarService, private http: HttpClient, private router: Router, private authDiscordService: AuthDiscordService) {
     this.sidebarService.sidebarHidden$.subscribe(hidden => this.isSidebarHidden = hidden);
@@ -136,6 +137,11 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.showPayPal = true; // Mostrar el componente de PayPal
   }
 
+  showTwilioComponent() {
+    this.resetViews();
+    this.showTwilio = true;
+  }
+
   private resetViews() {
     this.showNoticias = false;
     this.showSearch = false;
@@ -149,6 +155,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.showGoogleBooks = false;
     this.showPayPal = false;
     this.isArchiveVisible = false;
+    this.showTwilio = false;
   }
 
   @HostListener('window:scroll', [])

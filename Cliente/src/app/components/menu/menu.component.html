@@ -71,6 +71,7 @@
         <li><a (click)="showGoogleBooksSearch()">Buscar en Google Books</a></li> 
         <li><a (click)="displayPayPal()">Pagar con PayPal</a></li>
         <li><a (click)="showArchive()">Ver Archive.org</a></li>
+        <li><a (click)="showTwilioComponent()">Enviar Mensaje por WhatsApp</a></li>
       </ul>
     </div>
 
@@ -120,6 +121,9 @@
       </div>
       <div *ngIf="isArchiveVisible">
         <app-archive></app-archive>
+      </div>
+      <div *ngIf="showTwilio">
+        <app-twilio></app-twilio>
       </div>
   
     </div>
