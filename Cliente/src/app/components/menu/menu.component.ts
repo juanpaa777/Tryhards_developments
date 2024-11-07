@@ -32,6 +32,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   userGuilds: any[] = [];
   showPayPal = false;
   showTwilio = false;
+  showConferencia = false;
 
   constructor(private sidebarService: SidebarService, private http: HttpClient, private router: Router, private authDiscordService: AuthDiscordService) {
     this.sidebarService.sidebarHidden$.subscribe(hidden => this.isSidebarHidden = hidden);
@@ -212,5 +213,10 @@ export class MenuComponent implements OnInit, OnDestroy {
         }
       );
     }
+  }
+
+  iniciarConferencia() {
+    this.resetViews();
+    this.showConferencia = true;
   }
 }

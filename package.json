@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@daily-co/daily-js": "^0.73.0",
     "angular-oauth2-oidc": "^17.0.2",
     "googleapis": "^144.0.0"
   },
