@@ -1,0 +1,16 @@
+<!-- twilio.component.html -->
+<div class="container">
+    <h2>Enviar Mensaje por WhatsApp</h2>
+    <label for="phoneNumber">Número de Teléfono:</label>
+    <input type="text" id="phoneNumber" [(ngModel)]="phoneNumber" placeholder="Ingresa el número de teléfono" />
+
+    <label for="message">Escribe el Mensaje:</label>
+    <textarea id="message" [(ngModel)]="message" placeholder="Ingresa el mensaje"></textarea>
+
+    <button (click)="sendWhatsAppMessage()">Enviar Mensaje por WhatsApp</button>
+
+    <div *ngIf="alertMessage" class="alert" [ngClass]="{'alert-success': alertType === 'success', 'alert-error': alertType === 'error'}">
+        <span class="close" (click)="closeAlert()">&times;</span>
+        {{ alertMessage }}
+    </div>
+</div>
