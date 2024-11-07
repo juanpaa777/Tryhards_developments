@@ -72,6 +72,7 @@
         <li><a (click)="displayPayPal()">Pagar con PayPal</a></li>
         <li><a (click)="showArchive()">Ver Archive.org</a></li>
         <li><a (click)="showTwilioComponent()">Enviar Mensaje por WhatsApp</a></li>
+        <li><a (click)="iniciarConferencia()">Iniciar Conferencia</a></li>
       </ul>
     </div>
 
@@ -124,6 +125,9 @@
       </div>
       <div *ngIf="showTwilio">
         <app-twilio></app-twilio>
+      </div>
+      <div *ngIf="showConferencia">
+        <app-conferencia></app-conferencia>
       </div>
   
     </div>

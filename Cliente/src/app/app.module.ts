@@ -36,6 +36,7 @@ import { PagoMultasComponent } from './menu/Options/pago-multas/pago-multas.comp
 import { PaypalButtonComponent } from './components/menu/Options/paypal-button/paypal-button.component';
 import { ArchiveComponent } from './components/menu/Options/archive/archive.component';
 import { TwilioComponent } from './components/menu/Options/twilio/twilio.component';
+import { ConferenciaComponent } from './components/menu/Options/conferencia/conferencia.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { TwilioComponent } from './components/menu/Options/twilio/twilio.compone
     PaypalButtonComponent,
     ArchiveComponent,
     TwilioComponent,
+    ConferenciaComponent,
   ],
   imports: [
     BrowserModule,

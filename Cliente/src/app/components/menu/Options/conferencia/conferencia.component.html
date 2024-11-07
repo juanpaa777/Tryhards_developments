@@ -1,0 +1,32 @@
+<!-- conferencia.component.html -->
+<div id="video-container" class="container">
+  <h2 class="title">Iniciar Conferencia</h2>
+  <form (submit)="startConference(); $event.preventDefault()" class="conference-form">
+    <label for="roomUrl" class="label">Enlace de la sala:</label>
+    <input type="text" id="roomUrl" [(ngModel)]="roomUrl" name="roomUrl" required class="input" />
+    <button type="submit" class="button">Iniciar Conferencia</button>
+  </form>
+
+  <div *ngIf="isConferenceStarted" class="conference-info">
+    <h3 class="info-title">Conferencia Iniciada</h3>
+    <p class="info-text">Comparte este enlace para invitar a más personas:</p>
+    <input type="text" [value]="roomUrl" readonly title="Enlace de la sala" placeholder="Enlace de la sala" class="readonly-input" />
+    <button (click)="copyToClipboard()" class="copy-button">Copiar Enlace</button>
+  </div>
+
+  <div *ngIf="participants.length > 0" class="participants-list">
+    <h3>Participantes Conectados: <span class="participant-count"><i class="fas fa-eye"></i> {{ participants.length }}</span></h3>
+    <div class="grid-container">
+      <div class="grid-item" *ngFor="let participant of participants">
+        {{ participant.user_name }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón para unirse a la conferencia -->
+  <div class="join-conference">
+    <a [href]="'https://tryhardsdevelopments.daily.co/TF2yF7dUsVicHqBgzrYj?userId=' + userId" target="_blank">
+      <button class="button">Unirse a la Conferencia</button>
+    </a>
+  </div>
+</div>
