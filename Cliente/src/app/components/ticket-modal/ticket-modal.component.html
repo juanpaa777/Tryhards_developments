@@ -1,0 +1,40 @@
+<div class="ticket-container">
+  <div class="ticket-header">
+    <h2>Comprobante de Pago</h2>
+    <button class="close-button" (click)="closeModal()">×</button>
+  </div>
+
+  <div class="ticket-content">
+    <div class="ticket-details">
+      <div class="detail-row">
+        <span class="label">ID Transacción:</span>
+        <span class="value">{{data.transactionId}}</span>
+      </div>
+      
+      <div class="detail-row">
+        <span class="label">Fecha:</span>
+        <span class="value">{{data.date | date:'dd/MM/yyyy HH:mm'}}</span>
+      </div>
+      
+      <div class="detail-row">
+        <span class="label">Cliente:</span>
+        <span class="value">{{data.customerName}}</span>
+      </div>
+      
+      <div class="detail-row total">
+        <span class="label">Total Pagado:</span>
+        <span class="value">${{data.amount}}</span>
+      </div>
+    </div>
+
+    <div class="ticket-footer">
+      <p>¡Gracias por tu compra!</p>
+    </div>
+  </div>
+
+  <div class="ticket-actions">
+    <button class="action-button print" (click)="printTicket()">
+      Imprimir Ticket
+    </button>
+  </div>
+</div>

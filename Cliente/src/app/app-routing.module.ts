@@ -12,9 +12,9 @@ import { RegistroLectorComponent } from './components/menu/Options/Lectores/lect
 import { PersonalisadoComponent } from './components/menu/Options/ReportePersonalisado/personalisados.component';
 import { AuthGuard } from './auth.guard';
 import { ErrorComponent } from './components/home/error/error.component';
-import { MapaComponent } from './components/mapa/mapa.component';
+import { MapaComponent } from './components/menu/APIS/mapa/mapa.component';
 import { LoginComponent } from './components/home/login/login.component';
-import { GoogleBooksSearchComponent } from './components/menu/Options/google-books-search/google-books-search.component';
+import { GoogleBooksSearchComponent } from './components/menu/APIS/google-books-search/google-books-search.component';
 
 const routes: Routes = [
   

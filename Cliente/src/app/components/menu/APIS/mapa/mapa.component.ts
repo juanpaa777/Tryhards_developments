@@ -50,8 +50,8 @@ export class MapaComponent implements OnInit {
           lng: position.coords.longitude
         };
         this.mapa.setCenter(userLocation); // Centrar el mapa en la ubicación actual
-        this.mapa.setZoom(15); // Establecer el nivel de zoom al acercar
-        this.mostrarEfectoRadar(userLocation); // Mostrar el efecto de radar
+        this.mapa.setZoom(15); 
+        this.mostrarEfectoRadar(userLocation); 
       }, (error) => {
         console.error("No se pudo obtener la ubicación:", error);
       });

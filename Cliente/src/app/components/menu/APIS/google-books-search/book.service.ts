@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BookService {
-  private apiKey = 'AIzaSyDlBbwmK8yweJ9utOtm0-uGQ9NgOj47R3I'; // Reemplaza con tu API Key
+  private apiKey = 'AIzaSyDlBbwmK8yweJ9utOtm0-uGQ9NgOj47R3I'; 
   private apiUrl = 'https://www.googleapis.com/books/v1/volumes';
 
   constructor(private http: HttpClient) {}

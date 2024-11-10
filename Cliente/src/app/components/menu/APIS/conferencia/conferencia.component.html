@@ -1,10 +1,10 @@
 <!-- conferencia.component.html -->
 <div id="video-container" class="container">
-  <h2 class="title">Iniciar Conferencia</h2>
+  <h2 class="title">Iniciar Lectura de libros</h2>
   <form (submit)="startConference(); $event.preventDefault()" class="conference-form">
     <label for="roomUrl" class="label">Enlace de la sala:</label>
     <input type="text" id="roomUrl" [(ngModel)]="roomUrl" name="roomUrl" required class="input" />
-    <button type="submit" class="button">Iniciar Conferencia</button>
+    <button type="submit" class="button">Iniciar Trasmicion</button>
   </form>
 
   <div *ngIf="isConferenceStarted" class="conference-info">
