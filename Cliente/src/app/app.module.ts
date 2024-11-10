@@ -27,16 +27,18 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorComponent } from './components/home/error/error.component';
 import { DevolucionDeLibrosComponent } from './components/menu/Options/devolucion-de-libros/devolucion-de-libros.component';
-import { MapaComponent } from './components/mapa/mapa.component';
+import { MapaComponent } from './components/menu/APIS/mapa/mapa.component';
 import { NoticiasComponent } from './components/menu/Options/noticias/noticias.component';
 import { LoginComponent } from './components/home/login/login.component';
 import { OAuthModule } from 'angular-oauth2-oidc';
-import { GoogleBooksSearchComponent } from './components/menu/Options/google-books-search/google-books-search.component';
+import { GoogleBooksSearchComponent } from './components/menu/APIS/google-books-search/google-books-search.component';
 import { PagoMultasComponent } from './menu/Options/pago-multas/pago-multas.component';
-import { PaypalButtonComponent } from './components/menu/Options/paypal-button/paypal-button.component';
-import { ArchiveComponent } from './components/menu/Options/archive/archive.component';
-import { TwilioComponent } from './components/menu/Options/twilio/twilio.component';
-import { ConferenciaComponent } from './components/menu/Options/conferencia/conferencia.component';
+import { PaypalButtonComponent } from './components/menu/APIS/paypal-button/paypal-button.component';
+import { ArchiveComponent } from './components/menu/APIS/archive/archive.component';
+import { TwilioComponent } from './components/menu/APIS/twilio/twilio.component';
+import { ConferenciaComponent } from './components/menu/APIS/conferencia/conferencia.component';
+import { GoogleSearchComponent } from './components/menu/APIS/google-search/google-search.component';
+import { TicketModalComponent } from './components/ticket-modal/ticket-modal.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import { ConferenciaComponent } from './components/menu/Options/conferencia/conf
     ArchiveComponent,
     TwilioComponent,
     ConferenciaComponent,
+    GoogleSearchComponent,
+    TicketModalComponent,
   ],
   imports: [
     BrowserModule,

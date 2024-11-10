@@ -3,6 +3,7 @@ import { SidebarService } from '../menu/Options/Services/sidebar.services';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthDiscordService } from '../home/login/AuthDiscordService.service';
+import { DailyApiService } from '../menu/Options/daily-api.service';
 
 @Component({
   selector: 'app-menu',
@@ -33,9 +34,11 @@ export class MenuComponent implements OnInit, OnDestroy {
   showPayPal = false;
   showTwilio = false;
   showConferencia = false;
+  showGoogleSearchComponent = false; // Nueva propiedad para controlar la visibilidad del buscador
 
-  constructor(private sidebarService: SidebarService, private http: HttpClient, private router: Router, private authDiscordService: AuthDiscordService) {
+  constructor(private sidebarService: SidebarService, private http: HttpClient, private router: Router, private authDiscordService: AuthDiscordService, private dailyApiService: DailyApiService) {
     this.sidebarService.sidebarHidden$.subscribe(hidden => this.isSidebarHidden = hidden);
+    this.dailyApiService.conferenceVisible$.subscribe(visible => this.showConferencia = visible);
   }
 
   ngOnInit() {
@@ -157,6 +160,8 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.showPayPal = false;
     this.isArchiveVisible = false;
     this.showTwilio = false;
+    this.showConferencia = false;
+    this.showGoogleSearchComponent = false; // Asegúrate de ocultar el buscador
   }
 
   @HostListener('window:scroll', [])
@@ -217,6 +222,12 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   iniciarConferencia() {
     this.resetViews();
-    this.showConferencia = true;
+    this.dailyApiService.setConferenceVisible(true);
+  }
+
+  // Método para mostrar el buscador de Google
+  showGoogleSearch() {
+    this.resetViews(); // Resetea otras vistas
+    this.showGoogleSearchComponent = true; // Muestra el componente de búsqueda
   }
 }

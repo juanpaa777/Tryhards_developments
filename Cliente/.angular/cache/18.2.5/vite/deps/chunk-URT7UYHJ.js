@@ -5548,10 +5548,13 @@ export {
   BreakpointObserver,
   Breakpoints,
   FocusKeyManager,
+  InteractivityChecker,
+  FocusTrapFactory,
   isFakeMousedownFromScreenReader,
   isFakeTouchstartFromScreenReader,
   LiveAnnouncer,
   FocusMonitor,
+  A11yModule,
   Directionality,
   BidiModule,
   MatCommonModule,
@@ -5564,4 +5567,4 @@ export {
   MatPseudoCheckboxModule,
   MatRippleLoader
 };
-//# sourceMappingURL=chunk-HHAREOSQ.js.map
+//# sourceMappingURL=chunk-URT7UYHJ.js.map

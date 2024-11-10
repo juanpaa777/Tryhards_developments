@@ -20,7 +20,9 @@ export class AuthDiscordService {
   constructor(private http: HttpClient, private router: Router) {}
 
   login() {
-    const url = `https://discord.com/oauth2/authorize?client_id=${this.clientId}&redirect_uri=${encodeURIComponent(this.redirectUri)}&response_type=code&scope=identify%20email%20guilds%20connections`;
+    const url = `https://discord.com/oauth2/authorize?client_id=${this.clientId}&redirect_uri=${encodeURIComponent(this.redirectUri
+      
+    )}&response_type=code&scope=identify%20email%20guilds%20connections`;
     window.location.href = url;
   }
 
